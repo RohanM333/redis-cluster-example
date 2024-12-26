@@ -1,0 +1,61 @@
+version: '3'
+services:
+  redis-node1:
+    image: redis:6.2
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis/redis-node1/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+
+  redis-node2:
+    image: redis:6.2
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis/redis-node2/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6380:6379"
+
+  redis-node3:
+    image: redis:6.2
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis/redis-node3/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6381:6379"
+
+  redis-node4:
+    image: redis:6.2
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis/redis-node4/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6382:6379"
+
+  redis-node5:
+    image: redis:6.2
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis/redis-node5/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6383:6379"
+
+  redis-node6:
+    image: redis:6.2
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    volumes:
+      - ./redis/redis-node6/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6384:6379"
+
+  app:
+    build: ./app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis-node1
+      - redis-node2
+      - redis-node3
+      - redis-node4
+      - redis-node5
+      - redis-node6
